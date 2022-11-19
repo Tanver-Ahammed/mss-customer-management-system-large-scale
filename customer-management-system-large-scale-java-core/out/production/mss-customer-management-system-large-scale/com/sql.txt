@@ -1,0 +1,38 @@
+drop table valid_customers;
+CREATE TABLE valid_customers (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    country VARCHAR(50) NOT NULL,
+    post_code VARCHAR(50) NOT NULL,
+    contact VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    ip VARCHAR(50) NOT NULL,
+    INDEX(contact, email)
+);
+
+CREATE INDEX contact_index ON valid_customers(contact);
+CREATE INDEX email_index ON valid_customers(email);
+SELECT COUNT(*) AS total FROM valid_customers;
+
+
+drop table invalid_customers;
+CREATE TABLE invalid_customers (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    country VARCHAR(50) NOT NULL,
+    post_code VARCHAR(50) NOT NULL,
+    contact VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    ip VARCHAR(50) NOT NULL,
+    INDEX(contact, email)
+);
+
+CREATE INDEX contact_index ON invalid_customers(contact);
+CREATE INDEX email_index ON invalid_customers(email);
+SELECT COUNT(*) AS total FROM invalid_customers;
+
+
